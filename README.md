@@ -82,6 +82,19 @@ After building the desktop artifact, the Flatpak metadata can be validated with:
 appstreamcli validate packaging/flatpak/com.matthew.OpenMetaverseKit.metainfo.xml
 ```
 
+For a Flathub-style source build that keeps the local binary-oriented packaging intact, use
+`packaging/flathub/` instead. The generated npm cache sources can be refreshed with:
+
+```bash
+node packaging/flathub/generate-sources.mjs
+```
+
+Then the source-build manifest can be checked locally with:
+
+```bash
+flatpak-builder --force-clean flatpak-build packaging/flathub/com.matthew.OpenMetaverseKit.yaml
+```
+
 ## Multiplayer
 
 Start the room server:

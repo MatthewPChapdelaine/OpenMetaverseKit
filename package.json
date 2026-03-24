@@ -5,6 +5,7 @@
   "homepage": "https://github.com/MatthewPChapdelaine/OpenMetaverseKit",
   "type": "module",
   "main": "desktop/main.mjs",
+  "desktopName": "com.matthew.OpenMetaverseKit.desktop",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -27,7 +28,7 @@
   },
   "license": "MIT",
   "build": {
-    "appId": "com.matthew.openmetaversekit",
+    "appId": "com.matthew.OpenMetaverseKit",
     "productName": "OpenMetaverseKit",
     "copyright": "Copyright 2026 Matthew",
     "directories": {

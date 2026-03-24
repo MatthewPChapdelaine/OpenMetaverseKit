@@ -7,6 +7,10 @@ const currentDir = path.dirname(currentFile);
 const packagedIndex = path.join(currentDir, "..", "dist", "index.html");
 const appUrl = process.env.OPEN_METAVERSE_APP_URL ?? "http://127.0.0.1:5173/";
 
+if (process.platform === "linux") {
+  app.setDesktopName(process.env.OPEN_METAVERSE_DESKTOP_NAME ?? "com.matthew.OpenMetaverseKit.desktop");
+}
+
 function createWindow() {
   const window = new BrowserWindow({
     width: 1440,
