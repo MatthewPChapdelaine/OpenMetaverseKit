@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenMetaverseKit</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="control-panel">
+        <div class="panel-block">
+          <p class="eyebrow">Open-source VR metaverse package</p>
+          <h1>OpenMetaverseKit</h1>
+          <p class="panel-copy">
+            Generate free metaverse spaces, export their world config, and launch them in a browser-ready WebXR runtime.
+          </p>
+        </div>
+
+        <form id="world-form" class="panel-block panel-form">
+          <label>
+            <span>World name</span>
+            <input id="world-name" name="worldName" value="Commons Plaza" />
+          </label>
+
+          <label>
+            <span>Theme</span>
+            <select id="world-theme" name="theme">
+              <option value="sunset">Sunset Commons</option>
+              <option value="neon">Neon District</option>
+              <option value="forest">Forest Mesh</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Portal count</span>
+            <input id="portal-count" name="portalCount" type="range" min="2" max="10" value="4" />
+          </label>
+
+          <label>
+            <span>District count</span>
+            <input id="district-count" name="districtCount" type="range" min="1" max="8" value="3" />
+          </label>
+
+          <label>
+            <span>Social hubs</span>
+            <input id="hub-count" name="hubCount" type="range" min="1" max="12" value="5" />
+          </label>
+
+          <label>
+            <span>Experience scale</span>
+            <input id="experience-scale" name="experienceScale" type="range" min="1" max="5" step="0.5" value="2.5" />
+          </label>
+
+          <div class="button-row">
+            <button type="submit" class="primary">Regenerate</button>
+            <button type="button" id="randomize-button">Randomize</button>
+          </div>
+        </form>
+
+        <section class="panel-block">
+          <p class="eyebrow">Social locomotion controls</p>
+          <p class="panel-copy">
+            Desktop controls are tuned for a social metaverse flow: enter look mode, walk the room, sprint between hubs,
+            jump over props, and crouch into smaller spaces.
+          </p>
+          <div class="button-row">
+            <button type="button" id="enable-controls-button" class="primary">Enable Controls</button>
+            <button type="button" id="reset-view-button">Reset View</button>
+          </div>
+          <p id="controls-status" class="helper-copy">Click the viewport or press Enable Controls to lock the cursor and move like a desktop social-VR client.</p>
+          <div class="control-chip-grid">
+            <article class="control-chip"><strong>Mouse</strong><span>Look around</span></article>
+            <article class="control-chip"><strong>W A S D</strong><span>Move</span></article>
+            <article class="control-chip"><strong>Shift</strong><span>Sprint</span></article>
+            <article class="control-chip"><strong>Space</strong><span>Jump</span></article>
+            <article class="control-chip"><strong>C</strong><span>Crouch</span></article>
+            <article class="control-chip"><strong>Esc</strong><span>Release cursor</span></article>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span>Scene entities</span>
+              <strong id="stat-entities">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Portals</span>
+              <strong id="stat-portals">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Districts</span>
+              <strong id="stat-districts">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Theme</span>
+              <strong id="stat-theme">-</strong>
+            </article>
+            <article class="stat-card">
+              <span>Imported assets</span>
+              <strong id="stat-imported-assets">0</strong>
+            </article>
+            <article class="stat-card">
+              <span>Participants</span>
+              <strong id="stat-participants">1</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <p class="eyebrow">Multiplayer social space</p>
+          <p class="panel-copy">
+            Connect multiple people to the same room for shared presence, lightweight avatars, and room chat.
+          </p>
+          <div class="panel-form">
+            <label>
+              <span>Player name</span>
+              <input id="player-name" value="Builder One" />
+            </label>
+            <label>
+              <span>Room</span>
+              <input id="room-id" value="commons" />
+            </label>
+            <label>
+              <span>Server URL</span>
+              <input id="server-url" />
+            </label>
+          </div>
+          <div class="button-row">
+            <button type="button" id="connect-button" class="primary">Connect</button>
+            <button type="button" id="disconnect-button">Disconnect</button>
+          </div>
+          <p id="multiplayer-status" class="helper-copy">Offline. Start the multiplayer server and connect to a room.</p>
+
+          <div class="social-grid">
+            <div class="social-panel">
+              <strong>Room roster</strong>
+              <div id="participant-list" class="roster-list"></div>
+            </div>
+            <div class="social-panel">
+              <strong>Chat</strong>
+              <div id="chat-log" class="chat-log"></div>
+              <div class="chat-compose">
+                <input id="chat-input" placeholder="Say hello to the room" />
+                <button type="button" id="send-chat-button">Send</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <p class="eyebrow">Avatar emotes</p>
+          <p class="panel-copy">
+            Trigger quick social gestures and broadcast them to everyone in the room.
+          </p>
+          <div class="emote-grid">
+            <button type="button" class="emote-button primary" data-emote="wave">Wave</button>
+            <button type="button" class="emote-button" data-emote="dance">Dance</button>
+            <button type="button" class="emote-button" data-emote="clap">Clap</button>
+            <button type="button" class="emote-button" data-emote="cheer">Cheer</button>
+          </div>
+          <p id="emote-status" class="helper-copy">No emote active. Use `1` through `4` for quick gestures.</p>
+        </section>
+
+        <section class="panel-block">
+          <p class="eyebrow">Sit and stand</p>
+          <p class="panel-copy">
+            Social hubs now support explicit sit points for conversations and shared hangout spaces.
+          </p>
+          <div class="button-row">
+            <button type="button" id="sit-button" class="primary">Sit</button>
+            <button type="button" id="stand-button">Stand</button>
+          </div>
+          <p id="seat-status" class="helper-copy">Standing. Move near a social pod and press `E` or use Sit to take a seat.</p>
+        </section>
+
+        <section class="panel-block">
+          <p class="eyebrow">VR hand and controller mappings</p>
+          <p class="panel-copy">
+            When you enter immersive mode, controllers and tracked hands become social interaction tools instead of just pointers.
+          </p>
+          <div class="control-chip-grid">
+            <article class="control-chip"><strong>Trigger</strong><span>Wave emote</span></article>
+            <article class="control-chip"><strong>Grip / Squeeze</strong><span>Sit or stand</span></article>
+            <article class="control-chip"><strong>Controller Ray</strong><span>Spatial pointer</span></article>
+            <article class="control-chip"><strong>Tracked Hands</strong><span>Visible when supported</span></article>
+          </div>
+          <p id="xr-status" class="helper-copy">Desktop mode active. Enter VR to enable controller and hand mappings.</p>
+        </section>
+
+        <section class="panel-block">
+          <p class="eyebrow">Blender asset import</p>
+          <p class="panel-copy">
+            Import Blender exports directly into the metaverse preview. `.glb` is the recommended format for a single-file handoff.
+          </p>
+          <input id="asset-file" type="file" accept=".glb,.gltf,model/gltf-binary,model/gltf+json" />
+          <div class="button-row">
+            <button type="button" id="load-asset-button" class="primary">Load Blender Asset</button>
+            <button type="button" id="clear-assets-button">Clear Assets</button>
+          </div>
+          <p id="import-status" class="helper-copy">No Blender assets imported yet.</p>
+          <div id="imported-asset-list" class="asset-list"></div>
+        </section>
+
+        <section class="panel-block">
+          <div class="button-row">
+            <button type="button" id="export-button" class="primary">Export JSON</button>
+            <button type="button" id="import-button">Import JSON</button>
+          </div>
+          <label class="json-field">
+            <span>World manifest</span>
+            <textarea id="manifest-output" spellcheck="false"></textarea>
+          </label>
+        </section>
+
+        <section class="panel-block footer-note">
+          <p>
+            MIT licensed. Built with Three.js and WebXR. Use the browser's VR button to enter immersive mode on supported hardware.
+          </p>
+        </section>
+      </aside>
+
+      <main class="viewport-shell">
+        <div class="viewport-header">
+          <div>
+            <p class="eyebrow">Runtime preview</p>
+            <h2 id="scene-title">Commons Plaza</h2>
+          </div>
+          <div id="runtime-status-pill" class="status-pill">Desktop + VR ready</div>
+        </div>
+
+        <div id="viewport"></div>
+      </main>
+    </div>
+  </body>
+</html>

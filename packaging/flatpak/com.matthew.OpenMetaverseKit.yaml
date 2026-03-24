@@ -1,0 +1,32 @@
+app-id: com.matthew.OpenMetaverseKit
+runtime: org.freedesktop.Platform
+runtime-version: "24.08"
+sdk: org.freedesktop.Sdk
+command: openmetaversekit
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+modules:
+  - name: openmetaversekit
+    buildsystem: simple
+    build-commands:
+      - install -d /app/bin /app/share/applications /app/share/metainfo /app/share/icons/hicolor/512x512/apps
+      - install -Dm755 OpenMetaverseKit /app/bin/OpenMetaverseKit
+      - install -Dm755 openmetaversekit.sh /app/bin/openmetaversekit
+      - install -Dm644 com.matthew.OpenMetaverseKit.desktop /app/share/applications/com.matthew.OpenMetaverseKit.desktop
+      - install -Dm644 com.matthew.OpenMetaverseKit.metainfo.xml /app/share/metainfo/com.matthew.OpenMetaverseKit.metainfo.xml
+      - install -Dm644 512x512.png /app/share/icons/hicolor/512x512/apps/com.matthew.OpenMetaverseKit.png
+    sources:
+      - type: file
+        path: ../../release/linux-unpacked/OpenMetaverseKit
+      - type: file
+        path: openmetaversekit.sh
+      - type: file
+        path: com.matthew.OpenMetaverseKit.desktop
+      - type: file
+        path: com.matthew.OpenMetaverseKit.metainfo.xml
+      - type: file
+        path: ../../assets/icons/512x512.png

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="OpenMetaverseKit icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#f5d0fe"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="#020617"/>
+  <rect x="40" y="40" width="432" height="432" rx="96" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="132" fill="none" stroke="url(#ring)" stroke-width="34"/>
+  <circle cx="256" cy="256" r="86" fill="#0f172a" fill-opacity="0.92" stroke="#67e8f9" stroke-width="10"/>
+  <path d="M174 310c44-76 120-128 202-138-26 29-44 69-44 104 0 46 23 88 54 122-92-8-173-51-212-88z" fill="#f8fafc" fill-opacity="0.86"/>
+  <circle cx="186" cy="182" r="18" fill="#fbbf24"/>
+  <circle cx="342" cy="154" r="12" fill="#a5f3fc"/>
+  <circle cx="376" cy="326" r="14" fill="#fde68a"/>
+</svg>

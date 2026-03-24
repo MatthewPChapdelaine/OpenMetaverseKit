@@ -1,0 +1,70 @@
+{
+  "name": "openmetaversekit",
+  "version": "0.1.0",
+  "description": "Open-source WebXR package for generating free metaverse spaces with Three.js.",
+  "homepage": "https://example.com/openmetaversekit",
+  "type": "module",
+  "main": "desktop/main.mjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "multiplayer": "node server/multiplayer-server.js",
+    "desktop": "electron desktop/main.mjs",
+    "dist:linux": "npm run build && electron-builder --linux AppImage"
+  },
+  "keywords": [
+    "webxr",
+    "threejs",
+    "metaverse",
+    "vr",
+    "open-source"
+  ],
+  "author": "Matthew",
+  "repository": {
+    "type": "git",
+    "url": "https://example.com/openmetaversekit.git"
+  },
+  "license": "MIT",
+  "build": {
+    "appId": "com.matthew.openmetaversekit",
+    "productName": "OpenMetaverseKit",
+    "copyright": "Copyright 2026 Matthew",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "desktop/**/*",
+      "assets/icons/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "icon": "assets/icons",
+      "target": [
+        "AppImage"
+      ],
+      "category": "Game",
+      "artifactName": "${productName}-${version}-${arch}.${ext}",
+      "synopsis": "Open-source social VR metaverse toolkit",
+      "description": "A free Linux desktop metaverse app with local hosting, multiplayer rooms, Blender asset import, social emotes, seating, and WebXR controls.",
+      "desktop": {
+        "entry": {
+          "StartupWMClass": "OpenMetaverseKit",
+          "Comment": "Open-source social VR metaverse toolkit",
+          "Categories": "Game;Graphics;Network;",
+          "Keywords": "metaverse;vr;webxr;social;3d;open-source;"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "electron": "^41.0.3",
+    "electron-builder": "^26.8.1",
+    "three": "^0.183.2",
+    "vite": "^5.4.21"
+  },
+  "dependencies": {
+    "ws": "^8.20.0"
+  }
+}
