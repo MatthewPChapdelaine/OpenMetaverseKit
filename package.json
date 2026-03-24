@@ -2,7 +2,7 @@
   "name": "openmetaversekit",
   "version": "0.1.0",
   "description": "Open-source WebXR package for generating free metaverse spaces with Three.js.",
-  "homepage": "https://example.com/openmetaversekit",
+  "homepage": "https://github.com/MatthewPChapdelaine/OpenMetaverseKit",
   "type": "module",
   "main": "desktop/main.mjs",
   "scripts": {
@@ -23,7 +23,7 @@
   "author": "Matthew",
   "repository": {
     "type": "git",
-    "url": "https://example.com/openmetaversekit.git"
+    "url": "https://github.com/MatthewPChapdelaine/OpenMetaverseKit.git"
   },
   "license": "MIT",
   "build": {
