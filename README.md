@@ -112,6 +112,8 @@ Optional environment variables:
 Examples:
 
 ```bash
+./packaging/itchio/generate-page.py
+
 ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
   ./packaging/itchio/publish.sh web --dry-run
 
@@ -123,6 +125,8 @@ ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
 ```
 
 The `web` target uploads the `dist/` output. The `linux` target packages the AppImage built by `npm run dist:linux`.
+
+`generate-page.py` writes a page-ready markdown description, metadata summary, and browser checklist to `packaging/itchio/out/`.
 
 ## Multiplayer
 

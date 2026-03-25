@@ -184,7 +184,10 @@ Do not start with a premium price unless the build includes especially polished 
 
 ## Upload automation
 
-The repository includes `packaging/itchio/publish.sh` for repeatable `itch.io` uploads.
+The repository includes:
+
+- `packaging/itchio/publish.sh` for repeatable `itch.io` uploads
+- `packaging/itchio/generate-page.py` for generating page-ready store copy and metadata files
 
 Examples:
 
@@ -197,3 +200,9 @@ ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
 ```
 
 Use the `linux` target when you want to publish the AppImage channel instead of the browser build.
+
+Generate page files with:
+
+```bash
+./packaging/itchio/generate-page.py
+```
