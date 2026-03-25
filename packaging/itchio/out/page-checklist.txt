@@ -1,0 +1,13 @@
+Page URL: https://mindblade16.itch.io/metaverse-kit
+Title: Metaverse Kit
+Classification: Tool
+Kind: HTML
+Short description: Build browser-based 3D social spaces with Blender import, multiplayer rooms, and optional VR support.
+Tags: webxr, vr, 3d, worldbuilding, tool, multiplayer, blender, opensource
+
+Browser checklist:
+- Set the page title to Metaverse Kit and classification to Tool.
+- Paste the short description and generated markdown body into the page editor.
+- Attach the web upload to the playable HTML build flow if you want it to launch in-browser.
+- Apply the recommended tags.
+- Add screenshots that show the world view, editor surface, imported Blender content, and multiplayer presence.
