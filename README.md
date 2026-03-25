@@ -95,6 +95,35 @@ Then the source-build manifest can be checked locally with:
 flatpak-builder --force-clean flatpak-build packaging/flathub/com.matthew.OpenMetaverseKit.yaml
 ```
 
+## Itch.io upload automation
+
+Use `packaging/itchio/publish.sh` to build and stage an `itch.io` upload, then push it with `butler`.
+
+Required environment variables:
+
+- `ITCH_IO_USER` - your `itch.io` account name
+- `ITCH_IO_PROJECT` - the existing `itch.io` project slug
+
+Optional environment variables:
+
+- `ITCH_IO_CHANNEL` - overrides the default channel name (`web` or `linux`)
+- `BUTLER_API_KEY` - used by `butler` if you prefer token-based auth
+
+Examples:
+
+```bash
+ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
+  ./packaging/itchio/publish.sh web --dry-run
+
+ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
+  ./packaging/itchio/publish.sh web
+
+ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
+  ./packaging/itchio/publish.sh linux
+```
+
+The `web` target uploads the `dist/` output. The `linux` target packages the AppImage built by `npm run dist:linux`.
+
 ## Multiplayer
 
 Start the room server:

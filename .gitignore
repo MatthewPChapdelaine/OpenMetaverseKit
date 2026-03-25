@@ -7,3 +7,4 @@ flatpak-repo/
 OpenMetaverseKit.flatpak
 packaging/flathub/build-dir/
 packaging/flathub/repo/
+packaging/itchio/out/

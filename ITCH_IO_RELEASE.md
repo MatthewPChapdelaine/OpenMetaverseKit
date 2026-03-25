@@ -181,3 +181,19 @@ Do not start with a premium price unless the build includes especially polished 
 ## Recommended launch sentence
 
 `OpenMetaverseKit is an open-source worldbuilding toolkit for creating browser-based 3D social spaces with Blender import, multiplayer testing, and optional VR support.`
+
+## Upload automation
+
+The repository includes `packaging/itchio/publish.sh` for repeatable `itch.io` uploads.
+
+Examples:
+
+```bash
+ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
+  ./packaging/itchio/publish.sh web --dry-run
+
+ITCH_IO_USER=yourname ITCH_IO_PROJECT=openmetaversekit \
+  ./packaging/itchio/publish.sh web
+```
+
+Use the `linux` target when you want to publish the AppImage channel instead of the browser build.
